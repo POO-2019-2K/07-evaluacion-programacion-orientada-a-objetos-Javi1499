@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"
+        href="diseno.css">
+    <title>Inventario</title>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <center>
+            <h1 id="incio">Registro de Agenda</h1>
+        </center>
+        <div class="container-fluid">
+            <div class="row justify-content-between border">
+                <div class="col-4 border bg-light rounded">
+                    <form id="form" class="form" class="col-12 needs-validation" validate>
+                        <h2>Registro de Actividades</h2>
+                        <div class="form-group">
+                            <label for="nombreA">Nombre de Actividad</label>
+                            <input required class="form-control" id="nombreA" placeholder="Leer" type="text"
+                                required />
+                            <div class="valid-feedback">Correcto!</div>
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fechaL">Fecha limite </label>
+                            <input class="form-control" id="fechaL" placeholder="14/05/2019" type="date"
+                                required />
+                            <div class="valid-feedback">Correcto!</div>
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dias">Días restantes</label>
+                            <input class="form-control" id="dias" type="date" required />
+                            <div class="valid-feedback">Correcto!</div>
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </div>
+                        <div class="row">
+                            <button type="button" id="btnAdd" class="btn btn-primary col-6">Agregar</button>
+                        </div>>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <center>
+            <h3>Agenda de Actividades</h3>
+            <center>
+                <div class="row justify-content-center">
+
+                    <div class="col-md-10">
+                        <table id="listado" class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Nombre de Act.</th>
+                                    <th>Fecha Limite</th>
+                                    <th>Días restantes</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+    </div>
+</body>
+<script src="main.js" type="module"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+</html>
