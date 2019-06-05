@@ -18,12 +18,14 @@ class Main {
                 let fechaL = new Date(sfechaL[0], sfechaL[1]-1, sfechaL[2]);
 
 
-                let objTabla = {
+
+
+                let objTarea = {
                     nombreA: nombreA,
                     fechaL: fechaL
                 }
 
-                let tarea = new Tareas(objTabla);
+                let tarea = new Tareas(objTarea);
 
                 tabla.addTarea(tarea);
             }

@@ -18,8 +18,6 @@ export default class Tabla{
             e.fechaL = new Date(e.fechaL)
             this._showInTable(new Tareas(e));
         });
-
-        console.log(tarea.getDiasRestantes())
     }
     
 
@@ -34,24 +32,44 @@ export default class Tabla{
         row.insertCell(4);
 
         cellNombreA.innerHTML = tarea.nombreA;
-        cellFechaL.innerHTML = tarea.getFechaS();
+        cellFechaL.innerHTML = tarea.fechaL;
         cellDiasR.innerHTML = tarea.getDiasRestantes();
 
         let objTarea = {
-            nombre: tarea.nombreA,
-            email: tarea.getFechaS(),
+            nombreA: tarea.nombreA,
+            fechaL: tarea.fechaL
         }
         this._tareasArray.push(objTarea);
     }
 
 
-    addTarea(e) {
+    _addEditDeleteToRow(row, tareas) {
+        let btnDelete = document.createElement("input");
+        btnDelete.type = "button";
+        btnDelete.value = 'Eliminar';
+        btnDelete.className = 'btn btn-danger';
+    
+    
+        row.cells[4].innerHTML = '';
+        row.cells[4].appendChild(btnDelete);
+        btnDelete.addEventListener('click', () => {
+            this._tareasArray.splice(tarea, 1);
+            row.innerHTML = "";
+            localStorage.setItem("tareas", JSON.stringify(this._tareasArray));
+    
+            return;
+        });
+        row.cells[4].innerHTML = "";
+        row.cells[4].appendChild(btnDelete);
+    }
 
-        this._showInTable(e);
+    addTarea(tarea) {
 
-        this._tareasArray.sort()
-        localStorage.setItem("contacto1", JSON.stringify(this._tareasArray));
-        localStorage.setItem("contacto1", JSON.stringify(this._tareasArray));
+        this._showInTable(tarea);
+
+        this._tareasArray.sort();
+        localStorage.setItem("tareas", JSON.stringify(this._tareasArray.sort()));
+        localStorage.setItem("tareas", JSON.stringify(this._tareasArray.sort()));
     }
     
 
