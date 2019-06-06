@@ -33,6 +33,12 @@ class Main {
 
 
         })
+        document.querySelector("#alfabeticamente").addEventListener("click",() => {
+            tabla.mostrarAlfabeticamente();
+        });
+        document.querySelector("#numericamente").addEventListener("click",() => {
+            tabla.mostrarNumericamente();
+        });
 
 
     }

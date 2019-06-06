@@ -20,14 +20,55 @@ export default class Tabla {
         });
     }
 
+
+    /////////////////alfabeticamente//////////////////
+    _alfabeticamente(a, b) {
+        if (a.nombreA < b.nombreA) {
+            return -1;
+        }
+        if (a.nombreA > b.nombreA) {
+            return 1;
+        }
+        return 0;
+    }
+    _alfa() {
+        this._tareasArray.sort(this._alfabeticamente);
+    }
+    mostrarAlfabeticamente() {
+        this._tareasArray.sort(this._alfabeticamente);
+        localStorage.setItem("tareas", JSON.stringify(this._tareasArray));
+        location.reload();
+    }
+///////////////////////////////////////////////////////////////
+    _numericamente(a, b) {
+        if (a.fechaL < b.fechaL) {
+            return -1;
+        }
+        if (a.fechaL > b.fechaL) {
+            return 1;
+        }
+        return 0;
+    }
+    _num() {
+        this._tareasArray.sort(this._numericamente);
+    }
+    mostrarNumericamente() {
+        this._tareasArray.sort(this._numericamente);
+        localStorage.setItem("tareas", JSON.stringify(this._tareasArray));
+        location.reload();
+    }
+    /////////////////////////////////////////////////////////////
+
     _cancelEdit(row, tarea) {
         row.cells[0].innerHTML = tarea.nombreA;
         row.cells[1].innerHTML = tarea.getFechaS();
         this._addEditDeleteToRow(row, tarea);
     }
 
+
+
     _saveEdit(row, tarea, newTarea) {
-        let pos = this._findtarea(tarea.email);
+        let pos = this._findTarea(tarea.nombreA);
         this._tareasArray[pos] = newTarea;
         localStorage.setItem('tareas', JSON.stringify(this._tareasArray));
         this._cancelEdit(row, new Tareas(newTarea));
