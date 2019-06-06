@@ -19,6 +19,26 @@ export default class Tabla{
             this._showInTable(new Tareas(e));
         });
     }
+
+    _addEditDeleteToRow(row, tarea) {
+        let btnDelete = document.createElement("input");
+        btnDelete.type = "button";
+        btnDelete.value = 'Eliminar';
+        btnDelete.className = 'btn btn-danger';
+    
+    
+        row.cells[3].innerHTML = '';
+        row.cells[3].appendChild(btnDelete);
+        btnDelete.addEventListener('click', () => {
+            this._tareasArray.splice(tarea, 1);
+            row.innerHTML = "";
+            localStorage.setItem("tareas", JSON.stringify(this._tareasArray));
+    
+            return;
+        });
+        row.cells[3].innerHTML = "";
+        row.cells[3].appendChild(btnDelete);
+    }
     
 
     _showInTable(tarea) {
@@ -28,12 +48,14 @@ export default class Tabla{
         let cellFechaL = row.insertCell(1);
         let cellDiasR= row.insertCell(2);
 
-        let cellDelete = row.insertCell(3);
+        row.insertCell(3);
         row.insertCell(4);
 
         cellNombreA.innerHTML = tarea.nombreA;
-        cellFechaL.innerHTML = tarea.fechaL;
+        cellFechaL.innerHTML = tarea.getFechaS();
         cellDiasR.innerHTML = tarea.getDiasRestantes();
+
+        this._addEditDeleteToRow(row)
 
         let objTarea = {
             nombreA: tarea.nombreA,
@@ -43,25 +65,6 @@ export default class Tabla{
     }
 
 
-    _addEditDeleteToRow(row, tareas) {
-        let btnDelete = document.createElement("input");
-        btnDelete.type = "button";
-        btnDelete.value = 'Eliminar';
-        btnDelete.className = 'btn btn-danger';
-    
-    
-        row.cells[4].innerHTML = '';
-        row.cells[4].appendChild(btnDelete);
-        btnDelete.addEventListener('click', () => {
-            this._tareasArray.splice(tarea, 1);
-            row.innerHTML = "";
-            localStorage.setItem("tareas", JSON.stringify(this._tareasArray));
-    
-            return;
-        });
-        row.cells[4].innerHTML = "";
-        row.cells[4].appendChild(btnDelete);
-    }
 
     addTarea(tarea) {
 
