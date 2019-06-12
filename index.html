@@ -6,15 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"
-        href="diseno.css">
-    <title>Inventario</title>
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css"   href="diseno.css"/>
+                        
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">  
+        <title>Agenda de Tareas</title>
 </head>
 
 <body>
-    <div class="jumbotron">
+    <div >
         <center>
-            <h1 id="incio">Registro de Agenda</h1>
+            <h1 class="jumbotron" id="incio">Registro de Agenda</h1>
         </center>
         <div class="container-fluid">
             <div class="row justify-content-between border">
@@ -23,31 +26,34 @@
                         <h2>Registro de Actividades</h2>
                         <div class="form-group">
                             <label for="nombreA">Nombre de Actividad</label>
-                            <input required class="form-control" id="nombreA" placeholder="Leer" type="text"
-                                required />
+                            <input required class="form-control" id="nombreA" placeholder="Leer" type="text" required />
                             <div class="valid-feedback">Correcto!</div>
                             <div class="invalid-feedback">Este campo es obligatorio</div>
                         </div>
 
                         <div class="form-group">
                             <label for="fechaL">Fecha limite </label>
-                            <input class="form-control" id="fechaL" placeholder="14/05/2019" type="date"
-                                required />
+                            <input class="form-control" id="fechaL" placeholder="14/05/2019" type="date" required />
                             <div class="valid-feedback">Correcto!</div>
                             <div class="invalid-feedback">Este campo es obligatorio</div>
                         </div>
-                        <div class="row">
+                        <center>
+                        <div>
                             <button type="button" id="btnAdd" class="btn btn-primary col-6">Agregar</button>
                         </div>
 
-                    <br>
-                    <div>
-                        <button type="button" id="alfabeticamente" class="btn btn-primary col-6">Alfabeticamente</button>
-                    </div>
-                    <br>
-                    <div>
-                        <button type="button" id="numericamente" class="btn btn-primary col-6">Numericamente</button>
-                    </div>
+                        <br>
+                        <div>
+                            <button type="button" id="alfabeticamente"
+                                class="btn btn-primary col-6">Alfabeticamente</button>
+                        </div>
+                        <br>
+                        <div>
+                            <button type="button" id="numericamente"
+                                class="btn btn-primary col-6">Numericamente</button>
+                        </div>
+                        </center>
+
                     </form>
                 </div>
             </div>
@@ -59,7 +65,7 @@
                 <div class="row justify-content-center">
 
                     <div class="col-md-10">
-                        <table id="listado" class="table table-striped">
+                        <table id="listado" class="table table-striped table-dark">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Nombre de Act.</th>

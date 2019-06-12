@@ -21,6 +21,7 @@ export default class Tabla {
     }
 
 
+
     /////////////////alfabeticamente//////////////////
     _alfabeticamente(a, b) {
         if (a.nombreA < b.nombreA) {
@@ -39,7 +40,7 @@ export default class Tabla {
         localStorage.setItem("tareas", JSON.stringify(this._tareasArray));
         location.reload();
     }
-///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
     _numericamente(a, b) {
         if (a.fechaL < b.fechaL) {
             return -1;
@@ -74,23 +75,31 @@ export default class Tabla {
         this._cancelEdit(row, new Tareas(newTarea));
     }
 
-    _editRow(row, tarea) {
-        let inombreA = document.createElement('input');
-        inombreA.type = 'text';
-        inombreA.value = tarea.nombreA;
+    _editRow(row,tarea) {
+        let iNombre = document.createElement("input");
+        iNombre.type = "text";
+        iNombre.value = tarea.nombreA;
+        row.cells[0].innerHTML = '';
+        row.cells[0].appendChild(iNombre);
 
-        let ifechaL = document.createElement('input');
-        ifechaL.type = 'date';
-        ifechaL.value = tarea.getFechaS();
+        let iFechaL = document.createElement("input");
+        iFechaL.type = 'date';
+        iFechaL.value = tarea.getFechaS();
+        row.cells[1].innerHTML = '';
+        row.cells[1].appendChild(iFechaL);
 
-        let btnSave = document.createElement('input');
+        let btnSave = document.createElement("input");
         btnSave.type = 'button';
         btnSave.value = 'Grabar';
         btnSave.className = "btn btn-success";
+        row.cells[2].innerHTML = '';
+        row.cells[2].appendChild(btnSave);
+
+
         btnSave.addEventListener('click', () => {
             let newTarea = {
-                nombreA: tarea.inombreA,
-                fechaL: tarea.ifechaL
+                nombreA: tarea.iNombre,
+                fechaL: tarea.iFechaL
             };
 
             this._saveEdit(row, tarea, newTarea);
@@ -100,18 +109,18 @@ export default class Tabla {
         btnCancel.type = 'button';
         btnCancel.value = 'Cancelar';
         btnCancel.className = "btn btn-danger";
-        btnCancel.addEventListener('click', () => {
-            this._cancelEdit(row, tarea);
-        });
-
-        row.cells[0].innerHTML = '';
-        row.cells[0].appendChild(inombreA);
-        row.cells[1].innerHTML = '';
-        row.cells[1].appendChild(fechaL);
-        row.cells[2].innerHTML = '';
-        row.cells[2].appendChild(btnSave);
         row.cells[4].innerHTML = '';
         row.cells[4].appendChild(btnCancel);
+
+
+        btnCancel.addEventListener('click', () => {
+            this._cancelEdit(row, tarea);
+        })
+
+
+
+        
+        
     }
 
     _addEditDeleteToRow(row, tarea) {
@@ -134,7 +143,7 @@ export default class Tabla {
         row.cells[3].appendChild(btnDelete);
         row.cells[4].innerHTML = "";
         row.cells[4].appendChild(btnEdit)
-        
+
         btnDelete.addEventListener('click', () => {
             this._tareasArray.splice(tarea, 1);
             row.innerHTML = "";
@@ -143,7 +152,6 @@ export default class Tabla {
             return;
         });
     }
-
 
     _showInTable(tarea) {
         let row = this._tablaTareas.insertRow(-1);
@@ -159,7 +167,7 @@ export default class Tabla {
         cellFechaL.innerHTML = tarea.getFechaS();
         cellDiasR.innerHTML = tarea.getDiasRestantes();
 
-        this._addEditDeleteToRow(row)
+        this._addEditDeleteToRow(row, tarea);
 
         let objTarea = {
             nombreA: tarea.nombreA,
@@ -168,16 +176,32 @@ export default class Tabla {
         this._tareasArray.push(objTarea);
     }
 
-
+    _findTarea(nombreA) {
+        let foundAt = -1;
+        this._tareasArray.forEach((e, index) => {
+            if (e.nombreA === nombreA) {
+                foundAt = index;
+                return;
+            }
+        });
+        return foundAt;
+    }
 
     addTarea(tarea) {
-
+        let found = this._findTarea(tarea.nombreA);
+        if (found >= 0) {
+            Swal.fire({
+                type: "error",
+                tittle: "Error",
+                text: "La tarea ya existe"
+            });
+            return;
+        }
         this._showInTable(tarea);
-
-        this._tareasArray.sort();
-        localStorage.setItem("tareas", JSON.stringify(this._tareasArray.sort()));
-        localStorage.setItem("tareas", JSON.stringify(this._tareasArray.sort()));
+        localStorage.setItem("tareas", JSON.stringify(this._tareasArray));
     }
+
+
 
 
 
