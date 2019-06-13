@@ -72,6 +72,7 @@ export default class Tabla {
         let pos = this._findTarea(tarea.nombreA);
         this._tareasArray[pos] = newTarea;
         localStorage.setItem('tareas', JSON.stringify(this._tareasArray));
+        location.reload();
         this._cancelEdit(row, new Tareas(newTarea));
     }
 
@@ -84,7 +85,7 @@ export default class Tabla {
 
         let iFechaL = document.createElement("input");
         iFechaL.type = 'date';
-        iFechaL.value = tarea.getFechaS();
+        iFechaL.value = tarea.getFechaForDate();
         row.cells[1].innerHTML = '';
         row.cells[1].appendChild(iFechaL);
 
@@ -98,8 +99,8 @@ export default class Tabla {
 
         btnSave.addEventListener('click', () => {
             let newTarea = {
-                nombreA: tarea.iNombre,
-                fechaL: tarea.iFechaL
+                nombreA: iNombre.value,
+                fechaL: iFechaL.value
             };
 
             this._saveEdit(row, tarea, newTarea);

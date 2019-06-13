@@ -7,56 +7,60 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css"   href="diseno.css"/>
-                        
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">  
-        <title>Agenda de Tareas</title>
+    <link rel="stylesheet" type="text/css" href="diseno.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet"> 
+    <title>Agenda de Tareas</title>
 </head>
 
-<body>
-    <div >
-        <center>
-            <h1 class="jumbotron" id="incio">Registro de Agenda</h1>
-        </center>
-        <div class="container-fluid">
-            <div class="row justify-content-between border">
-                <div class="col-4 border bg-light rounded">
-                    <form id="form" class="form" class="col-12 needs-validation" validate>
-                        <h2>Registro de Actividades</h2>
-                        <div class="form-group">
-                            <label for="nombreA">Nombre de Actividad</label>
-                            <input required class="form-control" id="nombreA" placeholder="Leer" type="text" required />
-                            <div class="valid-feedback">Correcto!</div>
-                            <div class="invalid-feedback">Este campo es obligatorio</div>
-                        </div>
+<body background="pw_maze_black_2X.png">
+    <center>
+        <h1 class="jumbotron" id="incio">Registro de Agenda</h1>
+    </center>
+    <div class="container-fluid">
+        <div class="col-5">
+            <div class="center-block">
 
-                        <div class="form-group">
-                            <label for="fechaL">Fecha limite </label>
-                            <input class="form-control" id="fechaL" placeholder="14/05/2019" type="date" required />
-                            <div class="valid-feedback">Correcto!</div>
-                            <div class="invalid-feedback">Este campo es obligatorio</div>
-                        </div>
-                        <center>
+                <form id="form" class="form" class="col-12 needs-validation" validate>
+                    <h2>Registra una nueva actividad</h2>
+                    <div class="form-group">
+                        <label for="nombreA">Nombre de Actividad</label>
+                        <input required class="form-control" id="nombreA" placeholder="Leer" type="text" required />
+                        <div class="valid-feedback">Correcto!</div>
+                        <div class="invalid-feedback">Este campo es obligatorio</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fechaL">Fecha limite </label>
+                        <input class="form-control" id="fechaL" placeholder="14/05/2019" type="date" required />
+                        <div class="valid-feedback">Correcto!</div>
+                        <div class="invalid-feedback">Este campo es obligatorio</div>
+                    </div>
+                    <center>
                         <div>
                             <button type="button" id="btnAdd" class="btn btn-primary col-6">Agregar</button>
                         </div>
 
-                        <br>
+                        <h3>Ver por:</h3>
                         <div>
                             <button type="button" id="alfabeticamente"
-                                class="btn btn-primary col-6">Alfabeticamente</button>
+                                class="btn btn-primary col-6">Nombre de Actividad</button>
                         </div>
                         <br>
                         <div>
                             <button type="button" id="numericamente"
-                                class="btn btn-primary col-6">Numericamente</button>
+                                class="btn btn-primary col-6">Fecha proxima</button>
                         </div>
-                        </center>
+                    </center>
 
-                    </form>
+                </form>
                 </div>
             </div>
+            <br>
+            <br>
 
         </div>
         <center>
@@ -79,7 +83,6 @@
                         </table>
                     </div>
                 </div>
-    </div>
 </body>
 <script src="main.js" type="module"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
